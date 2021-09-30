@@ -22,7 +22,9 @@ const setTimeFormat = (timeInSeconds) => {
 function App() {
   const [time, setTime] = useState(0);
   const [intervalId, setIntervalId] = useState();
-  const [status, setStatus] = useState(false)
+  const [status, setStatus] = useState(false);
+  const [waitClicked, setWaitClicked] = useState(false);
+  const [timeoutId, setTimeoutId] = useState();
 
   const start = () => {
     setIntervalId(setInterval(run, 1000));
@@ -36,8 +38,16 @@ function App() {
   }
 
   const wait = () => {
-    clearInterval(intervalId);
-    setStatus(false);
+    if (waitClicked) {
+      setWaitClicked(false);
+      clearTimeout(timeoutId);
+
+      clearInterval(intervalId);
+      setStatus(false);
+    }
+
+    setWaitClicked(true);
+    setTimeoutId(setTimeout(() => setWaitClicked(false), 300));
   };
 
   const reset = () => {
