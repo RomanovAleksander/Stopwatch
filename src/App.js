@@ -25,7 +25,6 @@ function App() {
   const [status, setStatus] = useState(false)
 
   const start = () => {
-    run();
     setIntervalId(setInterval(run, 1000));
     setStatus(true);
   };
@@ -43,6 +42,8 @@ function App() {
 
   const reset = () => {
     setTime(0);
+    clearInterval(intervalId);
+    start();
   }
 
   const run = () => {
