@@ -1,5 +1,10 @@
 body {
   margin: 0;
+  background-color: #242526;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -7,49 +12,62 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container {
+  text-align: center;
+  justify-content: center;
+  background-color: #303846;
+  border-radius: 15px;
 }
 
-.wrapper {
-  padding-top: 5rem;
-  margin: 0 auto;
-  width: 600px;
+.timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.rm {
-  background: red;
-  border-radius: 50%;
-  color: #fff;
+span {
+  color: white;
+  font-size: 50px;
+}
+
+p {
+  color: white;
+  font-size: 50px;
+}
+
+.colon {
+  position: relative;
+  top: -4px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 500px;
+}
+
+.buttons li {
+  list-style: none;
+}
+
+.buttons li button {
+  height: 50px;
+  width: 100px;
+  color: white;
+  background-color: #242526;
+  font-size: 20px;
+  font-variant-caps: all-small-caps;
   border: none;
+  border-radius: 10px;
+  transition-duration: 100ms;
+  cursor: pointer;
 }
 
-.done {
-  text-decoration: line-through;
-}
-
-.lds-dual-ring {
-  display: inline-block;
-  width: 64px;
-  height: 64px;
-}
-.lds-dual-ring:after {
-  content: ' ';
-  display: block;
-  width: 46px;
-  height: 46px;
-  margin: 1px;
-  border-radius: 50%;
-  border: 5px solid blue;
-  border-color: blue transparent blue transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
-}
-@keyframes lds-dual-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.buttons li button:hover {
+  color: orange;
 }

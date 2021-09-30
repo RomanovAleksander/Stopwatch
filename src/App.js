@@ -1,38 +1,28 @@
-import React, { useEffect } from 'react'
-import TodoList from './Todo/TodoList'
-import Context from './context'
+import React  from 'react';
+import './index.css';
 
 function App() {
-  const [todos, setTodos] = React.useState([
-    { id: 1, completed: false, title: 'Купить хлеб' },
-    { id: 2, completed: false, title: 'Купить масло' },
-    { id: 3, completed: false, title: 'Купить молоко' },
-  ])
-
-  function toggleTodo(id) {
-    setTodos(
-      todos.map(todo => {
-      if (todo.id === id) {
-        todo.completed = !todo.completed
-      }
-      return todo
-    })
-    )
-  }
-
-  function removeTodo(id) {
-    setTodos(todos.filter(todo => todo.id !== id))
-  }
-
   return (
-    <Context.Provider value={{ removeTodo }}>
-      <div className="wrapper">
-        <h1>React tutorial</h1>
-
-        {todos.length ? <TodoList todos={todos} onToggle={toggleTodo}/>
-          : <p>No todos</p>}
+    <div className="container">
+      <div className="timer">
+        <span id="hour">00</span>
+        <p className="colon">:</p><span id="minute">00</span>
+        <p className="colon">:</p><span id="second">00</span>
       </div>
-    </Context.Provider>
+      <div className="buttonContainer">
+        <ul className="buttons">
+          <li>
+            <button type="button" name="start">Start</button>
+          </li>
+          <li>
+            <button type="button" name="stop">Pause</button>
+          </li>
+          <li>
+            <button type="button" name="pause">Reset</button>
+          </li>
+        </ul>
+      </div>
+    </div>
   )
 }
 
