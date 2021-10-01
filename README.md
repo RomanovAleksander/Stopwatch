@@ -17,4 +17,6 @@ $ npm install - install dependencies
 $ npm run start - start dev server
 $ npm run build - build application for production
 $ npm run eject - copies all the configuration files and the transitive dependencies  into project
+$ npm run predeploy - build application for production
+$ npm run deploy - deploy application on gh-pages
 ```
