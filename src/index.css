@@ -37,7 +37,7 @@ p {
   top: -4px;
 }
 
-.buttonContainer {
+.buttons-container {
   display: flex;
   justify-content: center;
 }

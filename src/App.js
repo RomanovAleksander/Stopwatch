@@ -65,19 +65,19 @@ function App() {
       <div className="timer">
         {setTimeFormat(time)}
       </div>
-      <div className="buttonContainer">
+      <div className="buttons-container">
         <ul className="buttons">
           <li>
             {
-              status ? <button type="button" name="stop" onClick={stop}>Stop</button> :
-              <button type="button" name="start" onClick={start}>Start</button>
+              status ? <button type="button" onClick={stop}>Stop</button> :
+              <button type="button" onClick={start}>Start</button>
             }
           </li>
           <li>
-            <button type="button" name="wait" onClick={wait}>Wait</button>
+            <button type="button" title="Click 2 times in 300ms" onClick={wait}>Wait</button>
           </li>
           <li>
-            <button type="button" name="reset" onClick={reset}>Reset</button>
+            <button type="button" onClick={reset}>Reset</button>
           </li>
         </ul>
       </div>
