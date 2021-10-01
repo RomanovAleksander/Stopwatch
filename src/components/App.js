@@ -1,24 +1,22 @@
-import React, {useState}  from 'react';
+import React, {useState, useEffect}  from 'react';
+import {Observable} from 'rxjs';
 import Timer from './Timer';
 import Buttons from './Buttons';
 import '../styles/index.css';
 
 function App() {
   const [time, setTime] = useState(0);
-  const [intervalId, setIntervalId] = useState();
   const [status, setStatus] = useState(false);
   const [waitClicked, setWaitClicked] = useState(false);
   const [timeoutId, setTimeoutId] = useState();
 
   const start = () => {
-    setIntervalId(setInterval(run, 1000));
     setStatus(true);
   };
 
   const stop = () => {
-    setTime(0);
-    clearInterval(intervalId);
     setStatus(false);
+    setTime(0);
   }
 
   const wait = () => {
@@ -26,7 +24,6 @@ function App() {
       setWaitClicked(false);
       clearTimeout(timeoutId);
 
-      clearInterval(intervalId);
       setStatus(false);
     }
 
@@ -36,13 +33,26 @@ function App() {
 
   const reset = () => {
     setTime(0);
-    clearInterval(intervalId);
-    start();
   }
 
-  const run = () => {
-    setTime((prev) => prev + 1);
-  };
+  useEffect(() => {
+    const timer$ = new Observable(observer => {
+      setInterval(() => {
+        observer.next();
+      }, 1000);
+    });
+
+    const stopwatch$ = timer$
+      .subscribe({
+        next: () => {
+          if (status) setTime((prev) => prev + 1)
+        }
+      });
+
+    return (() => {
+      stopwatch$.unsubscribe();
+    });
+  }, [status])
 
   return (
     <div className="container">

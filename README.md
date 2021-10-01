@@ -1,7 +1,7 @@
 ### Stopwatch
 
 * For implementation used:
-    * **React**;
+    * **React, RxJS**;
     * **[Create React App](https://github.com/facebook/create-react-app)** as an app starter;
     * **Github pages**.
 * [App on GitHub Pages](https://romanovaleksander.github.io/Stopwatch/)
